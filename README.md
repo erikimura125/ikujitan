@@ -19,6 +19,9 @@
 - 家事を手早く済ませる方法を検討している時
 - 晩御飯を手軽に作りたい時
 - おもちゃの購入を検討しているとき
+ 
+### 実装機能リストのURL
+https://docs.google.com/spreadsheets/d/1DUxOkam4a_mEYQm_Q6eVmmKvsopONPS6lOoy_zylWR8/edit?usp=sharing
 ​
 ## 設計書
 後ほど作成予定
