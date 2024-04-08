@@ -1,0 +1,9 @@
+<h1>投稿詳細</h1>
+  <div>
+    <%= image_tag @post.get_image %>
+    <%= @post.title %>
+    <%= @post.body %>
+    <%= @post.created_at.strftime('%Y/%m/%d') %>
+    <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  </div>
+
