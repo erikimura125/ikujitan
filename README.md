@@ -38,3 +38,7 @@ https://docs.google.com/spreadsheets/d/1DUxOkam4a_mEYQm_Q6eVmmKvsopONPS6lOoy_zyl
 ​
 ### 参考資料
 - ※「マイナビ ライフキャリア実態調査2023年版（ライフ編）」https://www.mynavi.jp/news/2023/07/post_39386.html
+
+
+## 使用素材
+- logo作成：https://www.designevo.com/
