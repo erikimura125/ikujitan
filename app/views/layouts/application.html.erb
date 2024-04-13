@@ -15,7 +15,7 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href="/posts"><%= image_tag('logo.png') %></a>
+          <a class="navbar-brand p-1" href="/posts"><%= image_tag('logo.png') %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -23,21 +23,21 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "投稿", new_post_path %>
+                <li>
+                  <a class="link-light mr-3 btn btn-outline-warning" href="<%= new_post_path %>">投稿</a>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "マイページ", user_path(current_user.id) %>
+                <li>
+                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= user_path(current_user.id) %>">マイページ</a>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <li>
+                  <a class="nav-item mr-3 btn btn-outline-warning" data-method="delete" href="/users/sign_out">ログアウト</a>
                 </li>
               <% else %>
-                <li class="nav-item">
-                  <%= link_to "新規登録", new_user_registration_path %>
+                <li>
+                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= new_user_registration_path %>">新規登録</a>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_user_session_path %>
+                <li>
+                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= new_user_session_path %>">ログイン</a>
                 </li>
               <% end %>
             </ul>
