@@ -9,5 +9,37 @@
       <%= link_to "編集", edit_post_path(@post.id) %>
       <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
+    
+    <% if @post.liked?(current_user) %>
+    <p>
+      <%= link_to post_likes_path(@post), method: :delete do %>
+        <span style="color:red;">♥<%= @post.likes.count %></span>
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_likes_path(@post), method: :post do %>
+        ♡<%= @post.likes.count %>
+      <% end %>
+    </p>
+  <% end %>
   </div>
 
+<div>
+  <p>コメント件数：<%= @post.comments.count %></p>
+  <% @post.comments.each do |comment| %>
+    <%= comment.comment %>
+    <p><%= image_tag comment.user.get_profile_image(30,30) %></p>
+    <%= comment.user.nick_name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+     <% if comment.user == current_user %>
+      <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model: [@post, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

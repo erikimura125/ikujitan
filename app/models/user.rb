@@ -6,10 +6,24 @@ class User < ApplicationRecord
          
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   has_one_attached :profile_image
   
   validates :nick_name, presence: true
+  
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+  
+  def guest_user?
+    email == GUEST_USER_EMAIL
+  end
 
   def get_profile_image(width, height)
     unless profile_image.attached?

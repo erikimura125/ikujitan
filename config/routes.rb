@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "homes#top"
   
-  resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update]
+  resources :posts, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
+    resource :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
   resources :users, only: [:show, :edit, :update]
-  resource :favorite, only: [:create, :destroy]
+  
+  devise_scope :user do
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+  end
 end

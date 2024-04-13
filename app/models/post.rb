@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   validates :title, presence: true
   validates :body, presence: true
@@ -15,8 +16,8 @@ class Post < ApplicationRecord
     image
   end
   
-  def favorited_by?(user)
-    favorites.exists?(user_id: user.id)
+  def liked?(user)
+    likes.where(user_id: user.id).exists?
   end
   
 end

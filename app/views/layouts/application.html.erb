@@ -24,20 +24,20 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <li>
-                  <a class="link-light mr-3 btn btn-outline-warning" href="<%= new_post_path %>">投稿</a>
+                  <a class="link-light mr-3 btn btn-outline-warning" href="<%= new_post_path %>"><i class="fa-solid fa-pen-to-square"></i>投稿</a>
                 </li>
                 <li>
-                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= user_path(current_user.id) %>">マイページ</a>
+                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= user_path(current_user.id) %>"><i class="fa-regular fa-circle-user"></i></i></i>マイページ</a>
                 </li>
                 <li>
-                  <a class="nav-item mr-3 btn btn-outline-warning" data-method="delete" href="/users/sign_out">ログアウト</a>
+                  <a class="nav-item mr-3 btn btn-outline-warning" data-method="delete" href="/users/sign_out"><i class="fa-solid fa-arrow-right-from-bracket"></i>ログアウト</a>
                 </li>
               <% else %>
                 <li>
-                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= new_user_registration_path %>">新規登録</a>
+                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= new_user_registration_path %>"><i class="fa-solid fa-user-plus"></i>新規登録</a>
                 </li>
                 <li>
-                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= new_user_session_path %>">ログイン</a>
+                  <a class="nav-item mr-3 btn btn-outline-warning" href="<%= new_user_session_path %>"><i class="fa-solid fa-arrow-right-to-bracket"></i>ログイン</a>
                 </li>
               <% end %>
             </ul>
