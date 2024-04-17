@@ -1,8 +1,12 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <h1>マイページ</h1>
 <div>
   <%= image_tag @user.get_profile_image(100,100) %>
   <h3>ニックネーム：<%= @user.nick_name %></h3>
-  <% unless user.guest_user? %>
+  <% unless @user.guest_user? %>
     <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
   <% end %>
 </div>
