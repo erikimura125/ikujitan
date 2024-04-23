@@ -22,6 +22,9 @@ Rails.application.routes.draw do
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
   end
+  
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
 
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
