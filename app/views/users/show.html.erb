@@ -9,13 +9,18 @@
   <% unless @user.guest_user? %>
     <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
   <% end %>
+  <h3>follows</h3>
+    <p><%= @user.followings.count %></p>
+  <h3>followers</h3>
+    <p><%= @user.followers.count %></p>
+    <p><%= render "relationships/btn", user: @user, options: { class: "follow-link" } %></p>
 </div>
 
 <% @posts.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image %>
-  <% end %>
-  <p><%= post.title %></p>
-</div>
+  <div>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image %>
+    <% end %>
+    <p><%= post.title %></p>
+  </div>
 <% end %>
