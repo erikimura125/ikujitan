@@ -20,15 +20,17 @@ class Post < ApplicationRecord
     likes.where(user_id: user.id).exists?
   end
   
-  def self.search_for(content, method)
-    if method == 'perfect'
-     Post.where(title: content)
-    elsif method == 'forward'
-      Post.where('name LIKE ?', content + '%')
-    elsif method == 'backward'
-      Post.where('name LIKE ?', '%' + content)
+  def self.looks(search, word)
+    if search == "perfect"
+      @post = Post.where("title LIKE?","#{word}")
+    elsif search == "forward"
+      @post = Post.where("title LIKE?","#{word}%")
+    elsif search == "backward"
+      @post = Post.where("title LIKE?","%#{word}")
+    elsif search == "partial"
+      @post = Post.where("title LIKE?","%#{word}%")
     else
-      Post.where('name LIKE ?', '%' + content + '%')
+      @post = Post.all
     end
   end
 end
