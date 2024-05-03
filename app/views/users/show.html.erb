@@ -8,10 +8,25 @@
   <h3>ニックネーム：<%= @user.nick_name %></h3>
   <% unless @user.guest_user? %>
     <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
+    <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
   <% end %>
-  <h3>follows</h3>
+  <% unless @user.id == current_user.id %>
+    <% if (current_user.following? @user) && (@user.following? current_user) %>
+    <% if @isRoom == true %>
+      <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">DMへ</a></p>
+    <% else %>
+      <%= form_for @room do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :user_id, value: @user.id %>
+        <% end %>
+        <%= f.submit "メッセージを送る", class:"btn  btn-primary btn-lg user-show-chat" %>
+      <% end %>
+    <% end %>
+    <% end %>
+  <% end %>
+  <h5>フォロー</h5>
     <p><%= @user.followings.count %></p>
-  <h3>followers</h3>
+  <h5>フォロワー</h5>
     <p><%= @user.followers.count %></p>
     <p><%= render "relationships/btn", user: @user, options: { class: "follow-link" } %></p>
 </div>
@@ -24,3 +39,5 @@
     <p><%= post.title %></p>
   </div>
 <% end %>
+
+<p><%= render "relationships/follow_list", user: @user %></p>

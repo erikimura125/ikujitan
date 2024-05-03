@@ -3,7 +3,7 @@
     <%= image_tag @post.get_image %>
     <%= @post.title %>
     <%= @post.body %>
-    <%= @post.user.nick_name %>
+    <%= link_to @post.user.nick_name, user_path(@post.user.id) %>
     <%= @post.created_at.strftime('%Y/%m/%d') %>
     <% if @post.user == current_user %>
       <%= link_to "編集", edit_post_path(@post.id) %>
