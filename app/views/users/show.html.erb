@@ -9,6 +9,7 @@
   <% unless @user.guest_user? %>
     <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
     <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
+    <p><%= link_to "通知", notifications_path(current_user) %></p>
   <% end %>
   <% unless @user.id == current_user.id %>
     <% if (current_user.following? @user) && (@user.following? current_user) %>

@@ -35,5 +35,7 @@ Rails.application.routes.draw do
   
   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
+  
+  resources :notifications, only: [:index]
 
 end
