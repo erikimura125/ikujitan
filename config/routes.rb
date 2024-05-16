@@ -22,20 +22,24 @@ Rails.application.routes.draw do
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
   end
-  
+
   resources :messages, only: [:create]
-  
+
   resources :rooms, only: [:create, :show, :index]
-  
+
   devise_scope :user do
     post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
   get '/search', to: 'searches#search'
-  
+
   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
   patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
-  
+
   resources :notifications, only: [:index]
+
+  get 'posts/life' => 'posts#life'
+  get 'posts/cook' => 'posts#cook'
+  get 'posts/toy' => 'posts#toy'
 
 end

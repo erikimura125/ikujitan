@@ -16,9 +16,21 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-
+  
+  def life
+    @posts = Post.all
+  end
+  
+  def cook
+    @posts = Post.all
+  end
+  
+  def toy
+    @posts = Post.all
+  end
+  
   def show
-    @post = Post.find(params[:id])
+    @posts = Post.find(params[:id])
     @comment = Comment.new
   end
   
@@ -41,10 +53,11 @@ class PostsController < ApplicationController
     end
   end
   
+  
   private
   
   def post_params
-    params.require(:post).permit(:image, :title, :body)
+    params.require(:post).permit(:image, :title, :body, :category)
   end
   
 end
