@@ -30,13 +30,13 @@ class PostsController < ApplicationController
   end
   
   def show
-    @posts = Post.find_by(category: params[:id])
-    if @posts.present?
+    @posts = Post.find(params[:id])
+    #if @posts.present?
       @comment = Comment.new
-    else
-      flash[:notice] = '指定された投稿が見つかりませんでした'
-      redirect_to posts_path 
-    end
+    #else
+      #flash[:notice] = '指定された投稿が見つかりませんでした'
+      #redirect_to posts_path 
+    #end
   end
   
   def destroy
