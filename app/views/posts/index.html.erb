@@ -1,11 +1,15 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning" href="<%= posts_life_path %>">LIFE</a>
+        <a class="link-light mr-3 btn btn-outline-warning" href="<%= life_posts_path %>">LIFE</a>
       </li>
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning" href="<%= posts_cook_path %>">COOK</a>
+        <a class="link-light mr-3 btn btn-outline-warning" href="<%= cook_posts_path %>">COOK</a>
       </li>
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning" href="<%= posts_toy_path %>">TOY</a>
+        <a class="link-light mr-3 btn btn-outline-warning" href="<%= toy_posts_path %>">TOY</a>
       </li>
 <h1>新着投稿</h1>
 <% @posts.each do |post| %>

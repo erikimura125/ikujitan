@@ -18,20 +18,25 @@ class PostsController < ApplicationController
   end
   
   def life
-    @posts = Post.all
+    @posts = Post.where(category: "life")
   end
   
   def cook
-    @posts = Post.all
+    @posts = Post.where(category: "cook")
   end
   
   def toy
-    @posts = Post.all
+    @posts = Post.where(category: "toy")
   end
   
   def show
-    @posts = Post.find(params[:id])
-    @comment = Comment.new
+    @posts = Post.find_by(category: params[:id])
+    if @posts.present?
+      @comment = Comment.new
+    else
+      flash[:notice] = '指定された投稿が見つかりませんでした'
+      redirect_to posts_path 
+    end
   end
   
   def destroy
