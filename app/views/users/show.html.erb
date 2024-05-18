@@ -6,7 +6,7 @@
 <div>
   <%= image_tag @user.get_profile_image(100,100) %>
   <h3>ニックネーム：<%= @user.nick_name %></h3>
-  <% unless @user.guest_user? %>
+  <% unless @user.guest_user? || current_user.nil? || @user.id != current_user.id %>
     <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
     <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
     <p><%= link_to "通知", notifications_path(current_user) %></p>

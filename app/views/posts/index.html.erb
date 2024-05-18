@@ -1,22 +1,33 @@
+<body>
 <div>
   <%= flash[:notice] %>
 </div>
-
+<div class="container">
+    <ul class="d-flex justify-content-center list-unstyled m-4">
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning" href="<%= life_posts_path %>">LIFE</a>
+        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= life_posts_path %>">LIFE</a>
       </li>
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning" href="<%= cook_posts_path %>">COOK</a>
+        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= cook_posts_path %>">COOK</a>
       </li>
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning" href="<%= toy_posts_path %>">TOY</a>
+        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= toy_posts_path %>">TOY</a>
       </li>
-<h1>新着投稿</h1>
-<% @posts.each do |post| %>
-  <div>
-    <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image %>
+    </ul>
+</div>
+  <div class="text-center"><h3>新着投稿</h3></div>
+  <div class="row justify-content-center ">
+    <% @posts.each_slice(3) do |posts| %>
+      <div class="col-md-4 text-center">
+      <% posts.each do |post| %>
+        <div>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_image, class: "rounded-circle", style: "width: 200px; height: 200px;" %>
+          <% end %>
+          <h5><%= post.title %></h5>
+        </div>
+      <% end %>
+      </div>
     <% end %>
-    <%= post.title %>
   </div>
-<% end %>
+</body>

@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@font-face {
+  font-family: 'azuki';
+  src: font-url('/assets/fonts/azuki.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {  
+  font-family: hoge;
+}
