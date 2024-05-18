@@ -1,44 +1,57 @@
 <div>
   <%= flash[:notice] %>
 </div>
-
-<h1>マイページ</h1>
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <h3>ニックネーム：<%= @user.nick_name %></h3>
-  <% unless @user.guest_user? || current_user.nil? || @user.id != current_user.id %>
-    <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
-    <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
-    <p><%= link_to "通知", notifications_path(current_user) %></p>
-  <% end %>
-  <% unless @user.id == current_user.id %>
-    <% if (current_user.following? @user) && (@user.following? current_user) %>
-    <% if @isRoom == true %>
-      <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">DMへ</a></p>
-    <% else %>
-      <%= form_for @room do |f| %>
-        <%= fields_for @entry do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
+<div class="container">
+  <div class="text-center"><h2>マイページ</h2></div>
+  <div class="row">
+    <%= image_tag @user.get_profile_image(200,200), class: "rounded-circle" %>
+    <h4>ニックネーム：<%= @user.nick_name %></h4>
+    <% unless @user.guest_user? || current_user.nil? || @user.id != current_user.id %>
+      <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
+      <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
+      <p><%= link_to "通知", notifications_path(current_user) %></p>
+    <% end %>
+    <% unless @user.id == current_user.id %>
+      <% if (current_user.following? @user) && (@user.following? current_user) %>
+      <% if @isRoom == true %>
+        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">DMへ</a></p>
+      <% else %>
+        <%= form_for @room do |f| %>
+          <%= fields_for @entry do |e| %>
+            <%= e.hidden_field :user_id, value: @user.id %>
+          <% end %>
+          <%= f.submit "メッセージを送る", class:"btn  btn-primary btn-lg user-show-chat" %>
         <% end %>
-        <%= f.submit "メッセージを送る", class:"btn  btn-primary btn-lg user-show-chat" %>
+      <% end %>
       <% end %>
     <% end %>
-    <% end %>
-  <% end %>
-  <h5>フォロー</h5>
-    <p><%= @user.followings.count %></p>
-  <h5>フォロワー</h5>
-    <p><%= @user.followers.count %></p>
-    <p><%= render "relationships/btn", user: @user, options: { class: "follow-link" } %></p>
-</div>
-
-<% @posts.each do |post| %>
-  <div>
-    <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image %>
-    <% end %>
-    <p><%= post.title %></p>
+    <h5>フォロー</h5>
+      <p><%= @user.followings.count %></p>
+    <h5>フォロワー</h5>
+      <p><%= @user.followers.count %></p>
+      <p><%= render "relationships/btn", user: @user, options: { class: "follow-link" } %></p>
   </div>
-<% end %>
+  <div class="row justify-content-center">
+  <% @posts.each do |post| %>
+    <div>
+      <%= link_to post_path(post.id) do %>
+        <%= image_tag post.get_image, class: "rounded-circle", style: "width: 200px; height: 200px;" %>
+      <% end %>
+      <p><%= post.title %></p>
+    </div>
+  <% end %>
+  </div>
+  <div class="text-center"><h4>いいね一覧</h4></div>
+  <div class="row justify-content-center">
+    <% @like_posts.each do |post| %>
+      <div>
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.get_image, class: "rounded-circle", style: "width: 200px; height: 200px;" %>
+        <% end %>
+        <p><%= post.title %></p>
+      </div>
+    <% end %>
+  </div>
 
-<p><%= render "relationships/follow_list", user: @user %></p>
+  <p><%= render "relationships/follow_list", user: @user %></p>
+</div>

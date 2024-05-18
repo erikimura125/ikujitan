@@ -19,7 +19,7 @@
   <div class="row justify-content-center ">
     <% @posts.each_slice(3) do |posts| %>
       <div class="col-md-4 text-center">
-      <% posts.each do |post| %>
+      <% @posts.each do |post| %>
         <div>
           <%= link_to post_path(post.id) do %>
             <%= image_tag post.get_image, class: "rounded-circle", style: "width: 200px; height: 200px;" %>
