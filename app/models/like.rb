@@ -6,11 +6,11 @@ class Like < ApplicationRecord
   validates :user_id, uniqueness: {scope: :post_id}
   
   def create_notification_like!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
-    if temp.blank?
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = ? ", current_user.id, post.user_id, post_id, 'like'])
+    if temp.blank? && current_user.id != post.user_id
       notification = current_user.active_notifications.new(
         post_id: id,
-        visited_id: user_id,
+        visited_id: post.user_id,
         action: 'like'
         )
         if notification.visitor_id == notification.visited_id

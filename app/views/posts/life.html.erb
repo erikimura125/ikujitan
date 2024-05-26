@@ -1,12 +1,10 @@
 <h1>LIFE</h1>
 <p>生活に関する時短術</p>
-<% @posts.each do |t| %>
-  <% if t.category == "life" %>
+<% @posts.each do |post| %>
     <div>
       <%= link_to post_path(post.id) do %>
         <%= image_tag post.get_image %>
       <% end %>
       <%= post.title %>
     </div>
-  <% end %>
 <% end %>

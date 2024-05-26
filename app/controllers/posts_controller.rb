@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
   def new
     @post = Post.new
   end
@@ -14,29 +15,16 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all
+    if  params[:category]
+      @posts = Post.where(category: params[:category])
+    else
+      @posts = Post.all
+    end
   end
-  
-  def life
-    @posts = Post.where(category: "life")
-  end
-  
-  def cook
-    @posts = Post.where(category: "cook")
-  end
-  
-  def toy
-    @posts = Post.where(category: "toy")
-  end
-  
+
   def show
     @posts = Post.find(params[:id])
-    #if @posts.present?
-      @comment = Comment.new
-    #else
-      #flash[:notice] = '指定された投稿が見つかりませんでした'
-      #redirect_to posts_path 
-    #end
+    @comment = Comment.new
   end
   
   def destroy

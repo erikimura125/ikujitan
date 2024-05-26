@@ -5,13 +5,13 @@
 <div class="container">
     <ul class="d-flex justify-content-center list-unstyled m-4">
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= life_posts_path %>">LIFE</a>
+        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= posts_path(category: "life") %>">LIFE</a>
       </li>
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= cook_posts_path %>">COOK</a>
+        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= posts_path(category: "cook") %>">COOK</a>
       </li>
       <li>
-        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= toy_posts_path %>">TOY</a>
+        <a class="link-light mr-3 btn btn-outline-warning btn-lg rounded-circle" href="<%= posts_path(category: "toy") %>">TOY</a>
       </li>
     </ul>
 </div>

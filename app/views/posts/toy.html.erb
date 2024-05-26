@@ -1,12 +1,10 @@
 <h1>TOY</h1>
 <p>一人で遊んでいてくれるおすすめおもちゃ</p>
-<% @posts.each do |t| %>
-  <% if t.category == "toy" %>
+<% @toys.each do |t| %>
     <div>
       <%= link_to post_path(post.id) do %>
         <%= image_tag post.get_image %>
       <% end %>
       <%= post.title %>
     </div>
-  <% end %>
 <% end %>

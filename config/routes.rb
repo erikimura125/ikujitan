@@ -44,8 +44,8 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index]
 
-  get 'posts/life', to: 'posts#life', as: 'life_posts'
-  get 'posts/cook', to: 'posts#cook', as: 'cook_posts'
-  get 'posts/toy', to: 'posts#toy', as: 'toy_posts'
+ # get 'posts/life', to: 'posts#life', as: 'life_posts'
+  #get 'posts/cook', to: 'posts#cook', as: 'cook_posts'
+  #get 'posts/toy', to: 'posts#toy', as: 'toy_posts'
 
 end

@@ -1,7 +1,7 @@
 <h1>COOK</h1>
 <p>料理に関する時短術</p>
-<% @posts.each do |t| %>
-  <% if t.category == "cook" %>
+<% @posts.each do |post| %>
+  <% if post.category == 'cook' %>
     <div>
       <%= link_to post_path(post.id) do %>
         <%= image_tag post.get_image %>
