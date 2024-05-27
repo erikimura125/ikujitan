@@ -1,21 +1,9 @@
 <h5>フォロー一覧</h5>
 <% if @users_followings.exists? %>
   <% @users_followings.each do |user| %>
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= user.nick_name %></td><br>
-          <td>フォロー数： <%= user.followings.count %></td>
-          <td>フォロワー数： <%= user.followers.count %></td>
-        </tr>
-      </tbody>
-    </table>
+      <a><%=link_to user.nick_name, user_path(user.id) %></a><br>
+      <a>フォロー数： <%= user.followings.count %></a><br>
+      <a>フォロワー数： <%= user.followers.count %></a><br>
   <% end %>
 <% else %>
   <p>ユーザーはいません</p>
@@ -23,21 +11,9 @@
 <h5>フォロワー一覧</h5>
 <% if @users_followers.exists? %>
   <% @users_followers.each do |user| %>
-      <thead>
-        <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= user.nick_name %></td><br>
-          <td>フォロー数： <%= user.followings.count %></td>
-          <td>フォロワー数： <%= user.followers.count %></td>
-        </tr>
-      </tbody>
-    </table>
+      <a><%=link_to user.nick_name, user_path(user.id) %></a><br>
+      <a>フォロー数： <%= user.followings.count %></a><br>
+      <a>フォロワー数： <%= user.followers.count %></a><br>
   <% end %>
 <% else %>
   <p>ユーザーはいません</p>
