@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   before_action :authenticate_user!, only: [:show]
+  before_action :is_matching_login_user, only: [:edit, :update, :withdraw]
 
   def index
     @users = User.all
@@ -72,4 +73,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to posts_path
+    end
+  end
 end
