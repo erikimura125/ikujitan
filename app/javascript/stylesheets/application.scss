@@ -1,1 +1,12 @@
 @use '~bootstrap/scss/bootstrap';
+
+@font-face {
+  font-family: 'azuki';
+  src: url('../fonts/azuki.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {  
+  font-family: 'azuki';
+}
