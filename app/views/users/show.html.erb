@@ -4,13 +4,17 @@
 <div class="container">
   <div class="text-center"><h2>マイページ</h2></div>
   <div class="row">
-    <%= image_tag @user.get_profile_image(200,200), class: "rounded-circle" %>
-    <h4>ニックネーム：<%= @user.nick_name %></h4>
-    <% unless @user.guest_user? || current_user.nil? || @user.id != current_user.id %>
-      <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
-      <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
-      <p><%= link_to "通知", notifications_path(current_user) %></p>
-    <% end %>
+    <div class="col-sm-3">
+    <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle" %>
+    </div>
+    <div class="col-sm-9">
+      <h4>ニックネーム：<%= @user.nick_name %></h4>
+      <% unless @user.guest_user? || current_user.nil? || @user.id != current_user.id %>
+        <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
+        <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
+        <p><%= link_to "通知", notifications_path(current_user) %></p>
+      <% end %>
+    </div>
     <% unless @user.id == current_user.id %>
       <% if (current_user.following? @user) && (@user.following? current_user) %>
       <% if @isRoom == true %>
@@ -26,9 +30,9 @@
       <% end %>
     <% end %>
     <h5>フォロー</h5>
-      <p><%= @user.followings.count %></p>
+      <p><%= @user.followings.count %></p><span style="margin-right: 10px;"></span>
     <h5>フォロワー</h5>
-      <p><%= @user.followers.count %></p>
+      <p><%= @user.followers.count %></p><span style="margin-right: 10px;"></span>
       <p><%= render "relationships/btn", user: @user, options: { class: "follow-link" } %></p>
   </div>
   <div class="row justify-content-center">

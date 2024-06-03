@@ -1,5 +1,5 @@
+<div class="container">
 <h1>投稿</h1>
-
 <% if @post.errors.any? %>
   <%= @post.errors.count %>件のエラーが発生しました
   <ul>
@@ -8,14 +8,16 @@
     <% end %>
   </ul>
 <% end %>
-
-<%= form_with model: @post do |f| %>
-  <h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>タイトル</h4>
-  <%= f.text_field :title %>
-  <h4>本文</h4>
-  <%= f.text_area :body %>
-  <%= f.select :category, [["LIFE", "life"], ["COOK", "cook"], ["TOY", "toy"]], include_blank: "カテゴリー選択" %>
-  <%= f.submit '投稿' %>
-<% end %>
+  <div class="row">
+    <%= form_with model: @post do |f| %>
+      <h4>画像</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+      <h4>タイトル</h4>
+      <%= f.text_field :title %>
+      <h4>本文</h4>
+      <%= f.text_area :body, rows: 6,cols: 60 %>
+      <%= f.select :category, [["LIFE", "life"], ["COOK", "cook"], ["TOY", "toy"]], include_blank: "カテゴリー選択" %>
+      <%= f.submit '投稿' %>
+    <% end %>
+  </div>
+</div>
