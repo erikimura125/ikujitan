@@ -10,9 +10,9 @@
     <div class="col-sm-9">
       <h4>ニックネーム：<%= @user.nick_name %></h4>
       <% unless @user.guest_user? || current_user.nil? || @user.id != current_user.id %>
-        <p><%= link_to "編集", edit_user_path(current_user.id) %></p>
-        <p><%= link_to "退会", unsubscribe_path(current_user) %></p>
-        <p><%= link_to "通知", notifications_path(current_user) %></p>
+        <a class="nav-item mr-3 btn btn-outline-warning" href="<%= edit_user_path(current_user.id) %>">編集</a>
+        <a class="nav-item mr-3 btn btn-outline-warning" href="<%= unsubscribe_path(current_user) %>">退会</a>
+        <a class="nav-item mr-3 btn btn-outline-warning" href="<%= notifications_path(current_user) %>">通知</a>
       <% end %>
     </div>
     <% unless @user.id == current_user.id %>
