@@ -1,7 +1,7 @@
 <div class="container">
 <div class="card-list-container py-5">
   <h1>投稿詳細</h1>
-    <div class="card  mx-auto mt-4 shadow-lg">
+    <div class="card  mx-auto mt-4 shadow-lg border">
       <div class="card-body">
         <div class="row">
             <%= image_tag @posts.get_image, class: "col-3", style:"object-fit: contain;" %>
@@ -12,7 +12,7 @@
               <p class="card-text">
                 <%=safe_join(@posts.body.split("\n"),tag(:br))%>
               </p>
-              <%= link_to @posts.user.nick_name, user_path(@posts.user.id), style:"margin-right: 10px;" %>
+              <span class="border border-warning p-1 rounded text-warning"> writing by <%= link_to @posts.user.nick_name, user_path(@posts.user.id), style:"margin-right: 10px;" %></span>
             </div>
             <%= @posts.created_at.strftime('%Y/%m/%d')%>
             <% if @posts.user == current_user %><span style="margin-right: 10px;"></span>
