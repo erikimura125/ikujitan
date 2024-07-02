@@ -18,13 +18,13 @@
     <% unless @user.id == current_user.id %>
       <% if (current_user.following? @user) && (@user.following? current_user) %>
       <% if @isRoom == true %>
-        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">DMへ</a></p>
+        <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-outline-warning btn-sm">DMへ</a></p>
       <% else %>
         <%= form_for @room do |f| %>
           <%= fields_for @entry do |e| %>
             <%= e.hidden_field :user_id, value: @user.id %>
           <% end %>
-          <%= f.submit "メッセージを送る", class:"btn  btn-primary btn-lg user-show-chat" %>
+          <%= f.submit "メッセージを送る", class:"btn btn-outline-warning btn-sm user-show-chat" %>
         <% end %>
       <% end %>
       <% end %>
