@@ -11,15 +11,16 @@
     <% if @messages.present? %>
       <% @messages.each do |m| %>
         <% @myUserId == m.user.id %>
-        <p><%= m.user.nick_name %></p>
-          <p><%= m.message %></p>
+          <div class="d-flex flex-row"><%= m.user.nick_name %></div>
+          <div class="rounded bg-warning text-black text-break" style="max-width:10%"><%= m.message %></div>
       <% end %>
     <% end %>
-    
+  <!--</div>-->
+  <div class="row">
     <%= form_for @message do |f| %>
       <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 50, class:"form-text-field" %>
         <%= f.hidden_field :room_id, value: @room.id %>
           <%= f.submit "投稿",class: 'form-submit'%>
     <% end %>
-  <!--</div>-->
+  </div>
 </div>
