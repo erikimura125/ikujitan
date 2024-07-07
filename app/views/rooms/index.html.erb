@@ -3,13 +3,10 @@
     <% @rooms.each do |room| %>
       <div class="dm_list_content">
       <%= link_to room_path(room), class: "dm_list__content__link" do %>
-        <div class="dm_list__content__link__box">
-          <h3 class="dm_list__content__link__box__name">
-            <%= opponent_user(room) %>
-          </h3>
-          <p class="dm_list__content__link__box__message">
-            <%= most_new_message_preview(room) %>
-          </p>
+        <div class="d-flex flex-row mb-3">
+          <div class="btn btn-warning rounded-circle"><%= opponent_user(room) %></div> 
+          <!--<div class="p-2">:</div>-->
+          <div class="text-dark p-1"><%= most_new_message_preview(room) %></div>
         </div>
       <% end %>
       </div>
