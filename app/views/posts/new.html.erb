@@ -17,7 +17,7 @@
       <h4>本文</h4>
       <%= f.text_area :body, rows: 6,cols: 60 %>
       <%= f.select :category, [["LIFE", "life"], ["COOK", "cook"], ["TOY", "toy"]], include_blank: "カテゴリー選択" %>
-      <%= f.submit '投稿' %>
+      <%= f.submit '投稿',class: 'btn btn-outline-warning' %>
     <% end %>
   </div>
 </div>
