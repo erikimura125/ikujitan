@@ -1,16 +1,16 @@
 <main>
   <div class="container">
     <div class="row">
-      <div class="mx-auto col-11 col-sm-10 col-lg-8 colxl-6">
+      <div class="mx-auto col-6 col-sm-6 col-lg-6 colxl-6">
         <div class="btn-wrapper col-10 mx-auto">
           <div class="row">
-            <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+            <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn btn-outline-info btn-sm btn-block mb-3 sign_in", method: :post %>
           </div>
           <div class="row">
-            <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">ログイン</a>
+            <a class="btn btn btn-outline-warning btn-sm btn-block mb-3 sign_in" href="/users/sign_in">ログイン</a>
           </div>
           <div class="row">
-            <a class="btn btn-success btn-sm btn-block mb-3 sign_up" href="/users/sign_up">新規登録</a>
+            <a class="btn btn btn-outline-danger btn-sm btn-block mb-3 sign_up" href="/users/sign_up">新規登録</a>
           </div>
         </div>
       </div>
