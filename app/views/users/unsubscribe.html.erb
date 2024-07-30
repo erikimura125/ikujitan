@@ -4,5 +4,5 @@
     再度ご利用いただくには、新規登録が必要となります。<br>
     本当に退会してよろしいですか？
   </p>
-  <%= link_to "退会する", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: "nav-item mr-3 btn btn-danger" %>
-  <%= link_to "退会しない", user_path(current_user), class: "nav-item mr-3 btn btn-primary" %>
+  <%= link_to "退会する", withdraw_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: "nav-item mr-3 btn btn-outline-danger" %>
+  <%= link_to "退会しない", user_path(current_user), class: "nav-item mr-3 btn btn-outline-warning" %>
