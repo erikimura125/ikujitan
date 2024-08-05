@@ -1,5 +1,6 @@
 <div class="container">
   <div class="dm_list">
+    <h3>DM一覧</h3>
     <% @rooms.each do |room| %>
       <div class="dm_list_content">
       <%= link_to room_path(room), class: "dm_list__content__link" do %>
