@@ -7,7 +7,6 @@
     <% end %>
   </div>
   
-  <!--<div class="row">-->
     <% if @messages.present? %>
       <% @messages.each do |m| %>
         <% @myUserId == m.user.id %>
@@ -15,7 +14,7 @@
           <div class="rounded bg-warning text-black text-break" style="max-width:30%"><%= m.message %></div>
       <% end %>
     <% end %>
-  <!--</div>-->
+    
   <div class="row">
     <%= form_for @message do |f| %>
       <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 50, class:"form-text-field" %>
