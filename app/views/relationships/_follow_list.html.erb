@@ -2,8 +2,6 @@
 <% if @users_followings.exists? %>
   <% @users_followings.each do |user| %>
       <a><%=link_to user.nick_name, user_path(user.id) %></a><br>
-      <!--<a>フォロー数： <%#= user.followings.count %></a><br>-->
-      <!--<a>フォロワー数： <%#= user.followers.count %></a><br>-->
   <% end %>
 <% else %>
   <p>ユーザーはいません</p>
@@ -12,8 +10,6 @@
 <% if @users_followers.exists? %>
   <% @users_followers.each do |user| %>
       <a><%=link_to user.nick_name, user_path(user.id) %></a><br>
-      <!--<a>フォロー数： <%#= user.followings.count %></a><br>-->
-      <!--<a>フォロワー数： <%#= user.followers.count %></a><br>-->
   <% end %>
 <% else %>
   <p>ユーザーはいません</p>
