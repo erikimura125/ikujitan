@@ -12,10 +12,10 @@
   
   
   <%= form_with model: @user do |f| %>
-    <label for="inputImage">ProfileImage</label>
+    <label for="inputImage">プロフィール画像</label><br>
     <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
     
-    <h4>ニックネーム</h4>
+    <h5>ニックネーム</h5>
     <%= f.text_field :nick_name %>
     
     <%= f.submit "変更を保存",class: 'btn btn-outline-warning' %>
