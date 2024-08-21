@@ -19,8 +19,6 @@
         投稿が見つかりません
       <% end %>
       にいいねしました
-      <%#= link_to 'あなたの投稿', post_path(notification.post), style:"font-weight: bold;" %>
-      <!--にいいねしました-->
     <% when 'comment' then %>
       <% if notification.post.user_id == visited.id %>
         <%= link_to "あなたの投稿", post_path(notification.post), style: "font-weight: bold;" %>

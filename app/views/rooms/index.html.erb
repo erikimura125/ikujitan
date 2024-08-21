@@ -6,7 +6,6 @@
       <%= link_to room_path(room), class: "dm_list__content__link" do %>
         <div class="d-flex flex-row mb-3">
           <div class="btn btn-warning rounded-circle"><%= opponent_user(room) %></div> 
-          <!--<div class="p-2">:</div>-->
           <div class="text-dark p-1"><%= most_new_message_preview(room) %></div>
         </div>
       <% end %>
